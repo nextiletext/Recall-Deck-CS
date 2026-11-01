@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Recall Deck - Computer Science</title>
+  <title>Recall Deck</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -42,354 +42,330 @@
       padding-left: max(16px, env(safe-area-inset-left, 0px));
       padding-right: max(16px, env(safe-area-inset-right, 0px));
     }
-    .wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-    header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-    h1 { font-family: var(--display); font-weight: 700; font-size: 1.75rem; letter-spacing: -0.02em; margin: 0; }
-    .subject-picker { display: flex; gap: 8px; flex-wrap: wrap; }
-    .subj-btn {
-      font-family: var(--mono); font-size: 0.85rem; padding: 6px 14px; border-radius: 20px;
-      border: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer;
-    }
-    .subj-btn.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 500; }
-    .filter-bar { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    select {
-      font: 400 0.9rem var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line);
-      border-radius: 6px; padding: 8px 12px; max-width: 340px; cursor: pointer; width: 100%;
-    }
+    .wrap { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+    header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    h1 { font-family: var(--display); font-weight: 700; font-size: 1.75rem; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+    .sub { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
     nav { display: flex; gap: 4px; border-bottom: 1px solid var(--line); overflow-x: auto; }
     nav button {
       background: none; border: 0; border-bottom: 3px solid transparent; color: var(--muted);
-      font: 500 0.95rem var(--body); padding: 10px 14px 9px; cursor: pointer; white-space: nowrap;
+      font: 500 0.95rem var(--body); padding: 10px 12px 9px; cursor: pointer; white-space: nowrap;
     }
     nav button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
-    button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .meter { display: flex; gap: 20px; flex-wrap: wrap; font-family: var(--mono); font-size: 0.82rem; color: var(--muted); }
+    .meter b { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
     .card {
-      background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 28px 24px;
-      min-height: 260px; display: flex; flex-direction: column; gap: 18px; cursor: pointer; user-select: none;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 28px 24px;
+      min-height: 260px; display: flex; flex-direction: column; gap: 18px; cursor: pointer;
     }
-    .topic { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; }
-    .q { font-family: var(--display); font-weight: 500; font-size: 1.4rem; line-height: 1.3; margin: 0; }
-    .ans { border-top: 1px dashed var(--line); padding-top: 16px; font-size: 1.05rem; color: var(--ink); }
+    .topic { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; }
+    .q { font-family: var(--display); font-weight: 500; font-size: 1.5rem; line-height: 1.25; text-wrap: balance; margin: 0; }
+    .ans { border-top: 1px dashed var(--line); padding-top: 16px; font-size: 1.05rem; max-width: 62ch; }
     .hint { margin-top: auto; font-size: 0.82rem; color: var(--muted); }
     .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .btn {
-      font: 600 1rem var(--body); padding: 12px 16px; border-radius: 6px; border: 1px solid var(--line);
+      font: 600 1rem var(--body); padding: 14px 16px; border-radius: 6px; border: 1px solid var(--line);
       background: var(--surface); color: var(--ink); cursor: pointer; text-align: center;
     }
     .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
     .btn.miss { color: var(--bad); border-color: var(--bad); }
     .btn.hit { color: var(--good); border-color: var(--good); }
-    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
-    .panel h2 { font-family: var(--display); font-size: 1.2rem; margin: 0; }
-    .unit-h { font-family: var(--display); font-size: 1.15rem; margin: 18px 0 8px; border-bottom: 1px solid var(--line); padding-bottom: 4px; color: var(--accent); }
-    .note-item { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
-    .note-item b { font-family: var(--display); font-size: 1rem; display: block; margin-bottom: 4px; }
-    .note-item ul { margin: 4px 0 0; padding-left: 1.2em; color: var(--muted); font-size: 0.95rem; }
-    .opts { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-    .opt { display: flex; gap: 10px; text-align: left; width: 100%; font: 400 0.95rem var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; cursor: pointer; }
+    .btn.small { padding: 8px 12px; font-size: 0.88rem; font-weight: 500; }
+    .btn.full { grid-column: 1 / -1; }
+    kbd { font-family: var(--mono); font-size: 0.75rem; border: 1px solid var(--line); border-radius: 3px; padding: 0 4px; margin-left: 6px; opacity: 0.75; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .panel h2 { font-family: var(--display); font-size: 1.15rem; margin: 0; }
+    label { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; color: var(--muted); }
+    input, textarea, select {
+      font: 400 1rem var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line);
+      border-radius: 4px; padding: 10px 12px; width: 100%;
+    }
+    textarea { min-height: 120px; resize: vertical; font-family: var(--mono); font-size: 0.85rem; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .list { display: flex; flex-direction: column; }
+    .item { display: flex; gap: 12px; justify-content: space-between; align-items: flex-start; padding: 12px 0; border-top: 1px solid var(--line); }
+    .item > div { min-width: 0; }
+    .item .t { font-weight: 500; overflow-wrap: anywhere; }
+    .item .s { color: var(--muted); font-size: 0.9rem; overflow-wrap: anywhere; }
+    .tag { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 0 5px; margin-left: 6px; vertical-align: middle; }
+    .bars { display: flex; flex-direction: column; gap: 14px; }
+    .bar-head { display: flex; justify-content: space-between; gap: 12px; font-size: 0.92rem; }
+    .bar-head span:last-child { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .track { height: 8px; background: var(--track); border-radius: 4px; overflow: hidden; margin-top: 4px; }
+    .fill { height: 100%; background: var(--good); }
+    .fill.weak { background: var(--bad); }
+    .fill.mid { background: var(--accent); }
+    .boxes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .boxes div { border: 1px solid var(--line); border-radius: 4px; padding: 8px; text-align: center; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+    .boxes b { display: block; font-size: 1.2rem; color: var(--ink); font-weight: 500; }
+    .empty { text-align: center; padding: 36px 12px; color: var(--muted); }
+    .empty h2 { font-family: var(--display); color: var(--ink); margin: 0 0 6px; }
+    .note { font-size: 0.85rem; color: var(--muted); margin: 0; }
+    .toast { font-size: 0.88rem; color: var(--good); min-height: 1.2em; }
+    .panel ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+    .panel li { max-width: 62ch; }
+    .done { align-items: center; text-align: center; padding: 32px 20px; }
+    .done .actions { width: 100%; max-width: 420px; }
+    .pct { font-family: var(--display); font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+    .big { font-size: 1.15rem; margin: 0; }
+    .kick { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .hero { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 8vw, 3rem); line-height: 1.05; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+    .opts { display: flex; flex-direction: column; gap: 10px; }
+    .opt { display: flex; gap: 12px; align-items: flex-start; text-align: left; width: 100%; font: 400 1rem var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; cursor: pointer; }
     .opt:hover:not(:disabled) { border-color: var(--accent); }
-    .opt.right { border-color: var(--good); background: rgba(23, 116, 79, 0.1); }
-    .opt.wrong { border-color: var(--bad); background: rgba(180, 38, 47, 0.1); }
+    .opt:disabled { cursor: default; }
+    .opt .ltr { font-family: var(--mono); font-size: 0.8rem; border: 1px solid var(--line); border-radius: 3px; min-width: 1.6em; text-align: center; padding: 1px 0; flex: none; }
+    .opt span:last-child { min-width: 0; overflow-wrap: anywhere; }
+    .opt.right { border-color: var(--good); border-width: 2px; }
+    .opt.wrong { border-color: var(--bad); border-width: 2px; }
+    .fb { border-top: 1px dashed var(--line); padding-top: 14px; max-width: 62ch; }
+    .fb.good b { color: var(--good); }
+    .fb.bad b { color: var(--bad); }
+    .tally { display: inline-flex; gap: 18px; align-items: center; }
+    .tally span { display: inline-flex; gap: 6px; align-items: center; }
+    .tally b { font-size: 1.05rem; }
+    .tally .ok { color: var(--good); }
+    .tally .no { color: var(--bad); }
+    .unit-h { font-family: var(--display); font-size: 1.3rem; margin: 28px 0 12px; }
+    @media (prefers-reduced-motion: no-preference) { .fill { transition: width 0.3s; } }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>Recall Deck</h1>
-      <div class="subject-picker" id="subjects"></div>
-    </header>
-    <nav role="tablist" id="tabs"></nav>
-    <main id="view"></main>
-  </div>
 
-  <script>
-    (function () {
-      var currentSubj = 'cs';
-      var currentUnit = 'all';
-      var tab = 'study';
-      var flipped = false;
-      var qIdx = 0;
-      var quizIdx = 0;
-      var quizSelected = null;
-      var quizScore = 0;
+<div class="wrap">
+  <header>
+    <h1>Recall Deck</h1>
+    <span class="sub" id="sub"></span>
+  </header>
+  <nav role="tablist" id="tabs"></nav>
+  <main id="view"></main>
+</div>
 
-      var DATA = {
-        cs: {
-          title: "OCR GCSE Computer Science (J277)",
-          units: [
-            {
-              id: "cs1_1",
-              name: "1.1 Systems Architecture",
-              cards: [
-                { q: "What is the purpose of the CPU?", a: "To process data and instructions by repeatedly fetching, decoding, and executing them." },
-                { q: "What does the ALU (arithmetic logic unit) do?", a: "Carries out arithmetic operations (+, -) and logical comparisons (AND, OR, NOT, <, >)." },
-                { q: "What does the control unit (CU) do?", a: "Manages the F-D-E cycle, decodes instructions, and sends control signals to coordinate components." },
-                { q: "What is cache memory?", a: "Extremely fast memory built into or near the CPU that holds frequently used data/instructions." },
-                { q: "What does the MAR (Memory Address Register) hold?", a: "The memory address of the location currently being read from or written to." },
-                { q: "What does the MDR (Memory Data Register) hold?", a: "The actual data or instruction fetched from main memory, or waiting to be written to memory." },
-                { q: "What does the Program Counter (PC) store?", a: "The memory address of the NEXT instruction to be fetched." },
-                { q: "What does the Accumulator (ACC) store?", a: "The immediate intermediate results of calculations performed by the ALU." }
-              ],
-              notes: [
-                { t: "Von Neumann Architecture", points: ["Data and instructions share the SAME memory space and bus system.", "F-D-E Cycle: PC copied to MAR -> Instruction fetched to MDR -> PC increments -> CU decodes -> ALU executes."] },
-                { t: "CPU Performance Factors", points: ["Clock Speed (GHz): Higher means more cycles per second.", "Cache Size: Larger cache reduces slow accesses to RAM.", "Cores: More independent processors allow parallel execution (requires multicore software)."] }
-              ],
-              quiz: [
-                { q: "Which register holds the address of the NEXT instruction?", opts: ["MAR", "MDR", "Program Counter", "Accumulator"], ans: 2 }
-              ]
-            },
-            {
-              id: "cs1_2",
-              name: "1.2 Memory & Storage",
-              cards: [
-                { q: "What is RAM?", a: "Volatile primary storage that holds open programs and active data currently in use." },
-                { q: "What is ROM?", a: "Non-volatile primary storage containing essential boot-up instructions (BIOS/firmware)." },
-                { q: "What is Virtual Memory?", a: "A section of secondary storage used as extra RAM when physical RAM is fully allocated." },
-                { q: "Compare SSD vs HDD.", a: "SSDs have no moving parts, are faster, more durable, and quieter, but cost more per GB than HDDs." }
-              ],
-              notes: [
-                { t: "Primary vs Secondary Storage", points: ["Primary: Volatile (RAM), directly accessed by CPU, fast.", "Secondary: Non-volatile, holds OS/files permanently (Solid State, Magnetic, Optical)."] },
-                { t: "Data Units & Calculations", points: ["Bit, Nibble (4 bits), Byte (8 bits), KB (1000 Bytes), MB, GB, TB.", "Sound File Size = Sample Rate x Bit Depth x Duration (s).", "Image File Size = Width x Height x Colour Depth (bits)."] }
-              ],
-              quiz: [
-                { q: "Which characteristic best describes RAM?", opts: ["Non-volatile & read-only", "Volatile & read/write", "Non-volatile & optical", "Volatile & read-only"], ans: 1 }
-              ]
-            },
-            {
-              id: "cs1_3",
-              name: "1.3 Networks, Connections & Protocols",
-              cards: [
-                { q: "What is a LAN?", a: "Local Area Network: Covers a small geographical site (e.g. school) with owned infrastructure." },
-                { q: "What is a WAN?", a: "Wide Area Network: Covers a large geographical area, linking LANs using third-party telecoms infrastructure." },
-                { q: "What does DNS do?", a: "Translates human-readable domain names (e.g. google.com) into numerical IP addresses." },
-                { q: "What is the difference between MAC and IP addresses?", a: "MAC is a fixed hardware address burned into the NIC; IP is a logical address assigned for routing on a network." }
-              ],
-              notes: [
-                { t: "Protocols & Layers", points: ["TCP/IP: Packet switching & routing.", "HTTP/HTTPS: Web page retrieval (HTTPS adds TLS/SSL encryption).", "FTP: File transfers.", "SMTP/POP3/IMAP: Email sending, downloading, and synchronisation."] }
-              ],
-              quiz: [
-                { q: "Which protocol is used to encrypt secure web page communication?", opts: ["HTTP", "HTTPS", "FTP", "IMAP"], ans: 1 }
-              ]
-            },
-            {
-              id: "cs1_4",
-              name: "1.4 Network Security",
-              cards: [
-                { q: "What is Phishing?", a: "Social engineering technique using deceptive communications to trick users into handing over sensitive data." },
-                { q: "What is SQL Injection?", a: "Inserting malicious SQL code into web input fields to manipulate or extract underlying database data." },
-                { q: "What is a Firewall?", a: "Hardware or software that inspects incoming/outgoing network packets against rules to block unauthorized traffic." }
-              ],
-              notes: [
-                { t: "Threats & Mitigations", points: ["Malware: Viruses, Worms, Trojans, Ransomware, Spyware.", "Penetration Testing: Authorized simulated attacks to expose vulnerabilities.", "Input Sanitation & Validation: Prevents injection attacks."] }
-              ],
-              quiz: [
-                { q: "What is used to prevent SQL Injection attacks?", opts: ["Firewall", "Input Validation", "Defragging", "MAC Filtering"], ans: 1 }
-              ]
-            },
-            {
-              id: "cs1_5",
-              name: "1.5 Systems Software",
-              cards: [
-                { q: "What are the core functions of an Operating System?", a: "User interface, memory management, multitasking, peripheral management, file system management, and user security." },
-                { q: "What is Defragmentation?", a: "Reorganizing fragmented file blocks on a magnetic hard drive so contiguous sectors are together, speeding up read access." }
-              ],
-              notes: [
-                { t: "OS & Utility Software", points: ["Device Drivers: Provide software bridges between OS and peripheral hardware.", "Defragmentation is NOT suitable for SSDs (no read head delay, wears out cells)."] }
-              ],
-              quiz: [
-                { q: "Why should defragmentation NOT be run on SSDs?", opts: ["It erases data", "It causes malware", "SSDs have no moving parts & it degrades lifespan", "It slows down CPU"], ans: 2 }
-              ]
-            }
-          ]
-        }
-      };
+<script>
+(function () {
+  var KEY = 'recall-deck.v1';
+  var cards = [], unit = 'all', tab = 'study', queue = [], welcome = true, running = false, total = 0, right = 0, missed = [], flipped = false, toast = '';
 
-      function renderHeader() {
-        var subHtml = '<button class="subj-btn active">Computer Science</button>';
-        document.getElementById('subjects').innerHTML = subHtml;
+  function load() {
+    try { var raw = localStorage.getItem(KEY); if (raw) return JSON.parse(raw); } catch (e) {}
+    return null;
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(cards)); } catch (e) {} }
+  function uid() { return 'c' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function mk(q, a, topic, ex) { return { id: uid(), q: q, a: a, topic: topic || 'General', box: 1, due: Date.now(), correct: 0, wrong: 0, ex: !!ex }; }
 
-        var navHtml = '';
-        var tabs = [
-          { id: 'study', label: 'Flashcards' },
-          { id: 'notes', label: 'Revision Notes' },
-          { id: 'quiz', label: 'Practice Quiz' }
-        ];
-        tabs.forEach(function (t) {
-          navHtml += '<button aria-selected="' + (tab === t.id) + '" onclick="setTab(\'' + t.id + '\')">' + t.label + '</button>';
+  var UNITS = [["1.1 Systems architecture", [["What is the purpose of the CPU?", "To process data and instructions by repeatedly fetching, decoding and executing them."], ["What does the ALU (arithmetic logic unit) do?", "It carries out arithmetic (such as add and subtract), logic operations (AND, OR, NOT) and comparisons."], ["What does the control unit (CU) do?", "It controls and coordinates the CPU. It fetches and decodes instructions and sends signals to direct data around the CPU."], ["What is cache?", "Very fast memory in or close to the CPU that holds frequently used data and instructions, so the CPU waits less for RAM."], ["What are registers?", "Tiny, extremely fast storage locations inside the CPU that hold the data and addresses being used right now."], ["What is Von Neumann architecture?", "A design where data and instructions are stored together in the same main memory, and the CPU fetches them from there."], ["What does the MAR (memory address register) hold?", "The address in memory of the data or instruction that is about to be fetched or written."], ["What does the MDR (memory data register) hold?", "The data or instruction that has just been fetched from memory, or is about to be written to memory."], ["What does the program counter (PC) hold?", "The address of the next instruction to be fetched. It goes up by one after each fetch."], ["What does the accumulator store?", "The results of calculations done by the ALU."], ["What are the stages of the fetch-decode-execute cycle?", "Fetch the instruction from memory, decode it in the control unit, then execute it. The cycle then repeats."], ["What happens to the address in the PC during the fetch stage?", "It is copied to the MAR. The instruction at that address is fetched into the MDR, and the PC goes up by one."], ["Name three things that affect CPU performance.", "Clock speed, cache size and the number of cores."], ["How does clock speed affect performance?", "It is measured in GHz. A higher clock speed means more cycles per second, so more instructions are processed each second."], ["How does cache size affect performance?", "A bigger cache keeps more frequently used data close to the CPU, so there are fewer slow trips to RAM."], ["How do more cores affect performance?", "Each core can process instructions at the same time, so more tasks can run in parallel. The software has to be able to use them."], ["What is an embedded system?", "A computer built into a larger device to do one dedicated job, usually with a limited or no user interface."], ["Give three examples of embedded systems.", "Washing machine controller, microwave, traffic lights, car engine management, central heating controller, digital watch."], ["How does an embedded system differ from a general purpose computer?", "It does one fixed task instead of many, usually runs a fixed program, and is small, low power and cheap."]], [["The CPU", ["The CPU processes data and instructions by running the fetch-decode-execute cycle over and over.", "ALU: does arithmetic, logic operations and comparisons.", "Control unit (CU): controls and coordinates the CPU, decodes instructions and sends control signals.", "Cache: very fast memory close to the CPU for frequently used data and instructions.", "Registers: tiny, very fast storage inside the CPU for data and addresses in use right now."]], ["Von Neumann architecture", ["Data and instructions are stored together in the same main memory, in binary.", "The CPU fetches instructions from memory one at a time.", "It uses specific registers: MAR, MDR, program counter and accumulator."]], ["The four registers", ["MAR (memory address register): the address to read from or write to.", "MDR (memory data register): the data or instruction that was fetched or is about to be written.", "Program counter (PC): the address of the next instruction. It goes up by one after each fetch.", "Accumulator: stores the results of ALU calculations."]], ["Fetch-decode-execute", ["Fetch: the PC address is copied to the MAR, the instruction is fetched into the MDR and the PC goes up by one.", "Decode: the control unit works out what the instruction means.", "Execute: the instruction is carried out, for example the ALU does a calculation. Then the cycle repeats."]], ["CPU performance", ["Clock speed (GHz): more cycles per second means more instructions per second.", "Cache size: more cache means fewer slow trips to RAM.", "Number of cores: more cores can run more instructions at once, but only if the software can use them."]], ["Embedded systems", ["A computer inside a larger device that does one dedicated job.", "Usually a fixed program, small, low power, cheap and with little or no user interface.", "Examples: washing machines, microwaves, traffic lights, car engine management, central heating controllers."]]]], ["1.2 Memory and storage", [["Why does a computer need primary storage?", "The CPU can only directly access data and instructions in primary storage, so programs and data must be loaded there to run."], ["What is RAM?", "Random access memory. It is volatile, can be read and written, and holds the data and programs currently in use."], ["What is ROM?", "Read-only memory. It is non-volatile and holds the boot-up instructions. Its contents are not normally changed."], ["What is the difference between volatile and non-volatile memory?", "Volatile memory loses its contents when the power is off (RAM). Non-volatile memory keeps them (ROM, secondary storage)."], ["What is virtual memory?", "Part of secondary storage used as extra RAM when RAM is full. Data not needed right now is moved out of RAM and swapped back when it is needed."], ["Why is virtual memory slower than RAM?", "Secondary storage is much slower to access than RAM, so swapping data in and out causes delays."], ["Why do computers need secondary storage?", "It is non-volatile, so it keeps programs and data when the power is off, and it offers far more capacity than primary storage."], ["Name the three types of secondary storage.", "Magnetic (hard disk drive), optical (CD, DVD, Blu-ray) and solid state (SSD, USB flash drive, SD card)."], ["What are the features of magnetic storage?", "Large capacity and cheap per GB, but it has moving parts, so it is slower, more fragile and less portable than solid state."], ["What are the features of optical storage?", "Low capacity, slow, and discs scratch easily, but the discs are cheap and portable."], ["What are the features of solid state storage?", "No moving parts, so it is fast, durable, quiet and low power. It costs more per GB than magnetic."], ["What is a bit?", "A single binary digit, 0 or 1. It is the smallest unit of data."], ["What are a nibble and a byte?", "A nibble is 4 bits. A byte is 8 bits."], ["What is the order of data units from kilobyte upwards?", "Kilobyte (KB), megabyte (MB), gigabyte (GB), terabyte (TB), petabyte (PB). Each is 1000 times the one before."], ["How do you calculate the file size of an image?", "Colour depth x width x height (in pixels). The answer is in bits."], ["How do you calculate the file size of a sound file?", "Sample rate x duration (in seconds) x bit depth."], ["How do you calculate the file size of a text file?", "Bits per character x number of characters."], ["How do you convert binary to denary?", "Write the place values 128, 64, 32, 16, 8, 4, 2, 1 above the bits and add up the values that have a 1 under them."], ["Convert the binary number 10110110 to denary.", "182 (128 + 32 + 16 + 4 + 2)."], ["Convert the denary number 45 to 8-bit binary.", "00101101 (32 + 8 + 4 + 1)."], ["What are the rules of binary addition?", "0+0=0, 0+1=1, 1+1=10 (write 0, carry 1), and 1+1+1=11 (write 1, carry 1)."], ["What is an overflow error?", "It happens when the result of a calculation is too big for the number of bits available, for example a ninth bit in an 8-bit number."], ["Why is hexadecimal used?", "It is shorter and easier for people to read and write than binary, with fewer mistakes. One hex digit represents 4 bits."], ["Convert the binary number 10111110 to hexadecimal.", "BE (1011 = B and 1110 = E)."], ["Convert the hexadecimal number 3F to denary.", "63 (3 x 16 + 15)."], ["What does a binary shift do?", "A left shift moves the bits left and multiplies by 2 for each place. A right shift divides by 2 for each place. The gaps are filled with 0s."], ["What is a character set?", "A defined list of characters that a computer can recognise, each with its own unique binary code."], ["What is ASCII?", "A character set that uses 7 bits per character, giving 128 characters. It covers mainly English letters, digits and symbols."], ["What is Unicode and why is it used?", "A much larger character set using more bits per character. It covers many languages and emojis, but files are bigger."], ["What is a pixel?", "The smallest element of an image. Each pixel is stored as a binary value for its colour."], ["What is colour depth?", "The number of bits used for each pixel. More bits means more colours but a bigger file."], ["What is resolution?", "The number of pixels in an image (width x height). More pixels means more detail but a bigger file."], ["What is metadata for an image?", "Data about the image file, such as its width, height and colour depth, which is needed to display it."], ["How is sound stored digitally?", "The height of the analogue sound wave is measured at regular intervals (sampled) and each measurement is stored as binary."], ["What is sample rate?", "The number of samples taken per second, measured in hertz. A higher rate gives better quality and a bigger file."], ["What is bit depth for sound?", "The number of bits used for each sample. A higher bit depth gives more accurate sound and a bigger file."], ["Why is compression needed?", "Smaller files use less storage and less bandwidth, so they download and send faster."], ["What is lossy compression?", "It permanently removes some data to make the file smaller. The original cannot be restored. Examples are JPEG and MP3."], ["What is lossless compression?", "It makes the file smaller without losing any data, so the original can be rebuilt exactly. Examples are PNG and ZIP."]], [["Primary storage", ["Needed because the CPU can only directly access data and instructions in primary storage.", "RAM: volatile, read and write, holds programs and data in use.", "ROM: non-volatile, holds the boot-up instructions.", "Virtual memory: part of secondary storage used as RAM when RAM is full. It is slower because secondary storage is slower."]], ["Secondary storage", ["Needed because it is non-volatile and has large capacity.", "Magnetic: large and cheap, but slower, fragile and moving parts.", "Optical: low capacity, slow, scratches, cheap and portable.", "Solid state: fast, durable and quiet, but more expensive per GB.", "Compare on capacity, speed, portability, durability, reliability and cost."]], ["Units and file sizes", ["Bit, nibble (4 bits), byte (8 bits), KB, MB, GB, TB, PB. Each step is x1000.", "Image size = colour depth x width x height.", "Sound size = sample rate x duration x bit depth.", "Text size = bits per character x number of characters."]], ["Binary, hex and shifts", ["Place values: 128, 64, 32, 16, 8, 4, 2, 1.", "Binary addition: 1+1=10, 1+1+1=11. Overflow if the result needs more bits than are available.", "Hex: one digit = 4 bits. A=10 up to F=15.", "Left shift x2 per place. Right shift divide by 2 per place."]], ["Characters, images and sound", ["ASCII: 7 bits, 128 characters. Unicode: more bits and many more characters.", "Image: pixels, colour depth and resolution. More of either means a bigger file.", "Sound: sample rate and bit depth. Higher values mean better quality and a bigger file."]], ["Compression", ["Lossy: removes data permanently (JPEG, MP3).", "Lossless: no data lost, original can be rebuilt (PNG, ZIP).", "Needed to save storage space and bandwidth."]]]], ["1.3 Networks, connections and protocols", [["What is a LAN?", "A local area network covers a small geographical area, such as one building or site, and is owned and managed by one organisation."], ["What is a WAN?", "A wide area network covers a large geographical area and joins LANs together. It uses infrastructure leased from telecoms companies. The Internet is the largest WAN."], ["Name factors that affect network performance.", "Bandwidth, the number of devices on the network, the type of transmission media, and the network topology."], ["What is a client-server network?", "A central server provides files and services and manages security, and clients request them. It is easy to back up and secure, but the server is costly and a single point of failure."], ["What is a peer-to-peer network?", "Every device is equal and shares files directly with the others, with no central server. It is cheap and simple but harder to secure and back up."], ["What does a router do?", "It sends data packets between networks and connects a LAN to the Internet."], ["What does a switch do?", "It connects devices on a LAN and sends data only to the device it is meant for."], ["What does a wireless access point (WAP) do?", "It lets wireless devices connect to a wired network."], ["What does a network interface card (NIC) do?", "It lets a device connect to a network. It also holds the device's MAC address."], ["Compare fibre optic and copper cable.", "Fibre is faster, carries data further and has less interference, but costs more. Copper is cheaper but slower and loses signal over distance."], ["What is the difference between the Internet and the World Wide Web?", "The Internet is the worldwide network of networks. The World Wide Web is the collection of websites and pages that are accessed over the Internet."], ["What is DNS?", "The domain name system. DNS servers translate domain names such as bbc.co.uk into IP addresses."], ["What is the cloud?", "Storing and accessing data and software on remote servers over the Internet. It can be reached from anywhere, but it needs an Internet connection and has ongoing costs."], ["Describe a star topology and give a pro and a con.", "Every device connects to a central switch. If one cable fails the others still work, but if the switch fails the whole network goes down."], ["Describe a mesh topology and give a pro and a con.", "Devices connect to many other devices. There are many routes, so it is reliable, but it needs lots of cabling and is expensive."], ["What is Wi-Fi?", "Wireless networking using radio waves. It is convenient and allows movement, but it can be slower, less secure and affected by interference."], ["What is Bluetooth used for?", "Short range, low power wireless connections between devices, such as headphones and a phone."], ["Why is encryption used on wireless networks?", "Wireless signals can be intercepted, so encryption scrambles the data and it cannot be read without the key."], ["What is an IP address?", "A unique address given to a device on a network so data packets can be routed to it. It can change."], ["What is a MAC address?", "A unique hardware address given to a NIC when it is made. It does not change and is written in hexadecimal."], ["What is a protocol?", "A set of rules for how devices communicate and how data is sent."], ["What does TCP/IP do?", "TCP splits data into packets and puts them back together. IP addresses the packets and routes them to the destination."], ["What are HTTP and HTTPS?", "Protocols for sending web pages. HTTPS is the encrypted, secure version."], ["What is FTP used for?", "Transferring files between computers over a network."], ["What are SMTP, POP and IMAP?", "SMTP sends email. POP downloads email from the server. IMAP keeps email on the server so it can be synced across devices."], ["Why are network protocols split into layers?", "Each layer does one job and can be developed and fixed separately, and it helps different manufacturers' devices work together."], ["What is a standard?", "An agreed set of rules, so that hardware and software from different makers can work together."]], [["Types of network", ["LAN: small area, one organisation.", "WAN: large area, joins LANs, leased infrastructure. The Internet is the largest.", "Performance depends on bandwidth, number of devices, transmission media and topology."]], ["Client-server and peer-to-peer", ["Client-server: central server, easy to secure and back up, server is costly and a single point of failure.", "Peer-to-peer: no server, devices share directly, cheap but harder to secure and back up."]], ["Network hardware", ["Router: sends packets between networks and connects to the Internet.", "Switch: sends data only to the intended device on a LAN.", "WAP: lets wireless devices join a wired network.", "NIC: connects a device to the network.", "Transmission media: copper (cheaper) or fibre (faster, longer, costs more)."]], ["The Internet, DNS and the cloud", ["Internet: network of networks. The web: pages accessed over it.", "DNS: turns domain names into IP addresses.", "Cloud: remote servers storing data and software, accessed over the Internet."]], ["Topologies", ["Star: devices connect to a central switch. Resilient to a cable failure, but the switch is a single point of failure.", "Mesh: devices connect to many others. Very reliable but expensive and complex."]], ["Wireless and addressing", ["Wi-Fi and Bluetooth use radio waves. Encryption protects wireless data.", "IP address: logical, can change, used to route packets.", "MAC address: fixed hardware address on the NIC."]], ["Protocols and layers", ["TCP/IP: TCP splits into packets and reassembles, IP routes them.", "HTTP and HTTPS for the web (HTTPS is encrypted). FTP for files.", "SMTP sends email. POP downloads it. IMAP keeps it on the server.", "Layers split communication into separate jobs. Standards let different devices work together."]]]], ["1.4 Network security", [["What is malware?", "Malicious software designed to damage a computer or gain unauthorised access. Examples are viruses, worms, trojans, ransomware and spyware."], ["What is the difference between a virus, a worm and a trojan?", "A virus attaches to files and needs a user to run it. A worm copies itself across networks on its own. A trojan pretends to be legitimate software."], ["What is ransomware?", "Malware that encrypts a user's files and demands payment to unlock them."], ["What is spyware?", "Malware that secretly records what a user does, such as keystrokes, and sends it to an attacker."], ["What is social engineering?", "Tricking or manipulating people into giving away information or access."], ["What is phishing and how can you spot it?", "Fake emails, messages or sites that trick people into giving personal details. Warning signs are spelling mistakes, an urgent tone and suspicious links."], ["What is a brute-force attack?", "Trying every possible password combination until the right one is found. Long, complex passwords make it take much longer."], ["What is a denial of service (DoS) attack?", "Flooding a server with requests so it cannot respond to genuine users. A DDoS attack uses many computers."], ["What is data interception?", "Capturing data as it travels across a network, for example with packet sniffing. Encryption makes the stolen data unreadable."], ["What is SQL injection?", "Typing SQL code into an input box to read, change or delete a database. Input validation helps to prevent it."], ["What is penetration testing?", "Authorised attempts to break into a system, to find weaknesses before real attackers do."], ["What does anti-malware software do?", "It scans for known malware, then removes it or quarantines it. It must be kept up to date."], ["What does a firewall do?", "It checks incoming and outgoing network traffic against a set of rules and blocks anything unauthorised."], ["What are user access levels?", "Settings that control who can see or change which data, such as read only, edit or administrator."], ["What makes a strong password?", "Long, with a mix of upper and lower case, numbers and symbols, not easy to guess, different for each account and changed regularly."], ["What is encryption?", "Scrambling data into cipher text that cannot be understood without the key."], ["Give examples of physical security.", "Locks, biometric scanners, CCTV and security guards."]], [["Threats", ["Malware: viruses, worms, trojans, ransomware, spyware.", "Social engineering and phishing trick people into giving away details.", "Brute force: tries every combination of password.", "DoS: floods a server so real users cannot get in.", "Data interception: captures data in transit.", "SQL injection: SQL typed into an input box to attack a database."]], ["Prevention", ["Penetration testing: authorised hacking to find weaknesses.", "Anti-malware and firewalls, kept up to date.", "User access levels and strong passwords.", "Encryption so that stolen data is unreadable.", "Physical security: locks, biometrics, CCTV."]]]], ["1.5 Systems software", [["What is the purpose of an operating system?", "Software that manages the computer's hardware and provides a platform for other software to run."], ["What does the user interface do?", "It lets the user interact with the computer, for example through a graphical interface or a command line."], ["What does the OS do for memory management?", "It gives RAM to programs, stops them overwriting each other and moves data to and from virtual memory."], ["What is multitasking?", "The OS shares CPU time between programs so several seem to run at the same time."], ["What is a device driver?", "Software that lets the OS communicate with a piece of hardware by translating OS instructions into ones the device understands."]], [["OS functions", ["User interface, memory management, multitasking, peripheral management, file management, user security."]], ["Utilities", ["Defragmentation, backup, compression, encryption."]]]]];
+
+  cards = load() || [];
+  if (!cards.length) {
+    UNITS.forEach(function (u) {
+      u[1].forEach(function (c) {
+        cards.push(mk(c[0], c[1], u[0], true));
+      });
+    });
+    save();
+  }
+
+  function getFilteredCards() {
+    if (unit === 'all') return cards;
+    return cards.filter(function (c) { return c.topic === unit; });
+  }
+
+  function renderHeader() {
+    document.getElementById('sub').textContent = cards.length + ' cards loaded';
+    var tabs = [
+      { id: 'study', label: 'Study' },
+      { id: 'notes', label: 'Revision Notes' },
+      { id: 'manage', label: 'Manage Deck' }
+    ];
+    var navHtml = '';
+    tabs.forEach(function (t) {
+      navHtml += '<button aria-selected="' + (tab === t.id) + '" onclick="setTab(\'' + t.id + '\')">' + t.label + '</button>';
+    });
+    document.getElementById('tabs').innerHTML = navHtml;
+  }
+
+  window.setTab = function (t) {
+    tab = t;
+    flipped = false;
+    render();
+  };
+
+  window.setUnit = function (u) {
+    unit = u;
+    queue = [];
+    running = false;
+    flipped = false;
+    render();
+  };
+
+  function renderStudy() {
+    var pool = getFilteredCards();
+    var html = '<div class="panel">';
+    html += '<label>Select Unit: <select onchange="setUnit(this.value)">';
+    html += '<option value="all" ' + (unit === 'all' ? 'selected' : '') + '>All Units (' + cards.length + ' cards)</option>';
+    UNITS.forEach(function (u) {
+      var count = cards.filter(function (c) { return c.topic === u[0]; }).length;
+      html += '<option value="' + esc(u[0]) + '" ' + (unit === u[0] ? 'selected' : '') + '>' + esc(u[0]) + ' (' + count + ')</option>';
+    });
+    html += '</select></label></div>';
+
+    if (!pool.length) {
+      html += '<div class="empty"><h2>No cards found</h2><p>Select a different unit or add cards in Manage Deck.</p></div>';
+      return html;
+    }
+
+    if (!running) {
+      queue = pool.slice().sort(function () { return Math.random() - 0.5; });
+      total = queue.length;
+      right = 0;
+      missed = [];
+      running = true;
+    }
+
+    if (queue.length === 0) {
+      var pct = total > 0 ? Math.round((right / total) * 100) : 0;
+      html += '<div class="panel done">';
+      html += '<span class="kick">Session Complete</span>';
+      html += '<div class="pct">' + pct + '%</div>';
+      html += '<p class="big">You remembered <b>' + right + '</b> out of <b>' + total + '</b> cards.</p>';
+      html += '<div class="actions" style="margin-top:16px;">';
+      html += '<button class="btn primary full" onclick="restartSession()">Study Again</button>';
+      html += '</div></div>';
+      return html;
+    }
+
+    var curr = queue[0];
+    html += '<div class="meter">Progress: <b>' + (total - queue.length + 1) + ' / ' + total + '</b> | Correct: <b>' + right + '</b></div>';
+    html += '<div class="card" onclick="flipCard()">';
+    html += '<div class="topic"><span>' + esc(curr.topic) + '</span><span>Box ' + curr.box + '</span></div>';
+    html += '<div class="q">' + esc(curr.q) + '</div>';
+    if (flipped) {
+      html += '<div class="ans">' + esc(curr.a) + '</div>';
+    } else {
+      html += '<div class="hint">Click or press Space to reveal answer</div>';
+    }
+    html += '</div>';
+
+    html += '<div class="actions">';
+    html += '<button class="btn miss" onclick="answerCard(false, event)">Missed it <kbd>1</kbd></button>';
+    html += '<button class="btn hit" onclick="answerCard(true, event)">Got it <kbd>2</kbd></button>';
+    html += '</div>';
+
+    return html;
+  }
+
+  window.flipCard = function () {
+    flipped = !flipped;
+    render();
+  };
+
+  window.restartSession = function () {
+    running = false;
+    render();
+  };
+
+  window.answerCard = function (hit, e) {
+    if (e) e.stopPropagation();
+    if (!queue.length) return;
+    var curr = queue.shift();
+    if (hit) {
+      right++;
+      curr.box = Math.min(5, curr.box + 1);
+      curr.correct++;
+    } else {
+      missed.push(curr);
+      curr.box = 1;
+      curr.wrong++;
+    }
+    save();
+    flipped = false;
+    render();
+  };
+
+  function renderNotes() {
+    var html = '<div class="panel">';
+    html += '<h2>OCR GCSE Computer Science - Notes</h2>';
+    UNITS.forEach(function (u) {
+      html += '<div class="unit-h">' + esc(u[0]) + '</div>';
+      u[2].forEach(function (n) {
+        html += '<div class="item"><div><div class="t">' + esc(n[0]) + '</div><ul>';
+        n[1].forEach(function (pt) {
+          html += '<li>' + esc(pt) + '</li>';
         });
-        document.getElementById('tabs').innerHTML = navHtml;
-      }
+        html += '</ul></div></div>';
+      });
+    });
+    html += '</div>';
+    return html;
+  }
 
-      window.setUnit = function (u) {
-        currentUnit = u;
-        qIdx = 0;
-        quizIdx = 0;
-        quizSelected = null;
-        quizScore = 0;
-        flipped = false;
-        render();
-      };
+  function renderManage() {
+    var html = '<div class="panel"><h2>Add New Flashcard</h2>';
+    html += '<label>Topic / Unit:<input type="text" id="newTopic" value="' + esc(unit === 'all' ? '1.1 Systems architecture' : unit) + '"></label>';
+    html += '<label>Question:<textarea id="newQ"></textarea></label>';
+    html += '<label>Answer:<textarea id="newA"></textarea></label>';
+    html += '<button class="btn primary" onclick="addCard()">Add Card</button>';
+    if (toast) html += '<div class="toast">' + esc(toast) + '</div>';
+    html += '</div>';
 
-      window.setTab = function (t) {
-        tab = t;
-        flipped = false;
-        render();
-      };
+    html += '<div class="panel"><h2>Existing Cards (' + cards.length + ')</h2>';
+    html += '<div class="list">';
+    cards.forEach(function (c) {
+      html += '<div class="item">';
+      html += '<div><div class="t">' + esc(c.q) + ' <span class="tag">' + esc(c.topic) + '</span></div>';
+      html += '<div class="s">' + esc(c.a) + '</div></div>';
+      html += '<button class="btn small miss" onclick="deleteCard(\'' + c.id + '\')">Delete</button>';
+      html += '</div>';
+    });
+    html += '</div></div>';
+    return html;
+  }
 
-      function getFilteredUnits() {
-        var units = DATA[currentSubj].units;
-        if (currentUnit === 'all') return units;
-        return units.filter(function (u) { return u.id === currentUnit; });
-      }
+  window.addCard = function () {
+    var qEl = document.getElementById('newQ');
+    var aEl = document.getElementById('newA');
+    var tEl = document.getElementById('newTopic');
+    if (!qEl.value.trim() || !aEl.value.trim()) return;
+    cards.push(mk(qEl.value.trim(), aEl.value.trim(), tEl.value.trim(), false));
+    save();
+    toast = 'Card added!';
+    qEl.value = '';
+    aEl.value = '';
+    setTimeout(function () { toast = ''; render(); }, 2000);
+    render();
+  };
 
-      function getCards() {
-        var list = [];
-        getFilteredUnits().forEach(function (u) {
-          u.cards.forEach(function (c) {
-            list.push({ topic: u.name, q: c.q, a: c.a });
-          });
-        });
-        return list;
-      }
+  window.deleteCard = function (id) {
+    cards = cards.filter(function (c) { return c.id !== id; });
+    save();
+    render();
+  };
 
-      function getQuiz() {
-        var list = [];
-        getFilteredUnits().forEach(function (u) {
-          u.quiz.forEach(function (q) {
-            list.push({ topic: u.name, q: q.q, opts: q.opts, ans: q.ans });
-          });
-        });
-        return list;
-      }
+  window.addEventListener('keydown', function (e) {
+    if (tab !== 'study' || !running || !queue.length) return;
+    if (e.key === ' ' || e.key === 'Spacebar') {
+      e.preventDefault();
+      flipCard();
+    } else if (e.key === '1') {
+      answerCard(false);
+    } else if (e.key === '2') {
+      answerCard(true);
+    }
+  });
 
-      function renderUnitSelector() {
-        var html = '<div class="filter-bar">';
-        html += '<label style="font-size:0.85rem; color:var(--muted); width:100%;">Filter by Topic / Unit:';
-        html += '<select onchange="setUnit(this.value)">';
-        html += '<option value="all" ' + (currentUnit === 'all' ? 'selected' : '') + '>All Topics</option>';
-        DATA[currentSubj].units.forEach(function (u) {
-          html += '<option value="' + u.id + '" ' + (currentUnit === u.id ? 'selected' : '') + '>' + u.name + '</option>';
-        });
-        html += '</select></label></div>';
-        return html;
-      }
+  function render() {
+    renderHeader();
+    var main = document.getElementById('view');
+    if (tab === 'study') main.innerHTML = renderStudy();
+    else if (tab === 'notes') main.innerHTML = renderNotes();
+    else if (tab === 'manage') main.innerHTML = renderManage();
+  }
 
-      function renderStudy() {
-        var cards = getCards();
-        var html = renderUnitSelector();
-        if (cards.length === 0) return html + '<div class="panel">No cards available for this unit.</div>';
-        var c = cards[qIdx % cards.length];
-        html += '<div class="card" onclick="flipCard()">';
-        html += '<div class="topic"><span>' + c.topic + '</span><span>' + (qIdx + 1) + '/' + cards.length + '</span></div>';
-        html += '<div class="q">' + c.q + '</div>';
-        if (flipped) {
-          html += '<div class="ans">' + c.a + '</div>';
-        } else {
-          html += '<div class="hint">Click to reveal answer</div>';
-        }
-        html += '</div>';
-        html += '<div class="actions">';
-        html += '<button class="btn miss" onclick="nextCard(event)">Missed it</button>';
-        html += '<button class="btn hit" onclick="nextCard(event)">Got it</button>';
-        html += '</div>';
-        return html;
-      }
-
-      window.flipCard = function () {
-        flipped = !flipped;
-        render();
-      };
-
-      window.nextCard = function (e) {
-        e.stopPropagation();
-        flipped = false;
-        qIdx++;
-        render();
-      };
-
-      function renderNotes() {
-        var html = renderUnitSelector();
-        html += '<div class="panel">';
-        html += '<h2>' + DATA[currentSubj].title + '</h2>';
-        getFilteredUnits().forEach(function (u) {
-          html += '<div class="unit-h">' + u.name + '</div>';
-          u.notes.forEach(function (n) {
-            html += '<div class="note-item"><b>' + n.t + '</b><ul>';
-            n.points.forEach(function (p) {
-              html += '<li>' + p + '</li>';
-            });
-            html += '</ul></div>';
-          });
-        });
-        html += '</div>';
-        return html;
-      }
-
-      function renderQuiz() {
-        var quiz = getQuiz();
-        var html = renderUnitSelector();
-        if (quiz.length === 0) return html + '<div class="panel">No quiz questions available for this unit.</div>';
-
-        if (quizIdx >= quiz.length) {
-          html += '<div class="panel" style="text-align:center; padding:30px;">';
-          html += '<h2>Quiz Complete!</h2>';
-          html += '<p>Score: <b>' + quizScore + ' / ' + quiz.length + '</b></p>';
-          html += '<button class="btn primary" onclick="resetQuiz()">Try Again</button>';
-          html += '</div>';
-          return html;
-        }
-
-        var q = quiz[quizIdx];
-        html += '<div class="panel">';
-        html += '<div class="topic"><span>' + q.topic + '</span><span>Question ' + (quizIdx + 1) + '/' + quiz.length + '</span></div>';
-        html += '<div class="q">' + q.q + '</div>';
-        html += '<div class="opts">';
-        q.opts.forEach(function (opt, idx) {
-          var cls = 'opt';
-          if (quizSelected !== null) {
-            if (idx === q.ans) cls += ' right';
-            else if (idx === quizSelected) cls += ' wrong';
-          }
-          html += '<button class="' + cls + '" ' + (quizSelected !== null ? 'disabled' : '') + ' onclick="selectOpt(' + idx + ')">' + opt + '</button>';
-        });
-        html += '</div>';
-
-        if (quizSelected !== null) {
-          html += '<button class="btn primary" style="margin-top:10px;" onclick="nextQuiz()">Next Question</button>';
-        }
-        html += '</div>';
-        return html;
-      }
-
-      window.selectOpt = function (idx) {
-        quizSelected = idx;
-        if (idx === getQuiz()[quizIdx].ans) quizScore++;
-        render();
-      };
-
-      window.nextQuiz = function () {
-        quizIdx++;
-        quizSelected = null;
-        render();
-      };
-
-      window.resetQuiz = function () {
-        quizIdx = 0;
-        quizSelected = null;
-        quizScore = 0;
-        render();
-      };
-
-      function render() {
-        renderHeader();
-        var main = document.getElementById('view');
-        if (tab === 'study') main.innerHTML = renderStudy();
-        else if (tab === 'notes') main.innerHTML = renderNotes();
-        else if (tab === 'quiz') main.innerHTML = renderQuiz();
-      }
-
-      render();
-    })();
-  </script>
+  render();
+})();
+</script>
 </body>
 </html>
