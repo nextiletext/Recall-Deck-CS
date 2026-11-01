@@ -172,10 +172,21 @@
                 { q: "What does von Neumann architecture store in main memory?", a: "Both program instructions and data share the same unified main memory space." }
               ],
               quiz: [
-                { q: "According to the notes, which component coordinates the F-D-E cycle and sends control signals?", opts: ["ALU", "Control Unit (CU)", "MAR", "Accumulator"], ans: 1 },
-                { q: "What is stored in the Accumulator (ACC)?", opts: ["The address of the next instruction", "Intermediate results of calculations from the ALU", "Data waiting to be written to ROM", "The clock speed frequency"], ans: 1 },
-                { q: "What defines Von Neumann Architecture?", opts: ["Data and instructions are stored separately in two different physical chips", "Program instructions and data share the same main memory", "The CPU has no registers", "Data can only be processed using optical lasers"], ans: 1 },
-                { q: "Which register holds the memory address of the data about to be read or written?", opts: ["MDR", "Program Counter", "MAR", "Accumulator"], ans: 2 }
+                { q: "Which CPU component carries out arithmetic operations and logical comparisons?", opts: ["Control Unit", "Cache", "ALU", "MAR"], ans: 2 },
+                { q: "What is the main role of the Control Unit (CU)?", opts: ["Perform addition and subtraction", "Coordinate the F-D-E cycle and decode instructions", "Hold intermediate ALU results", "Store boot-up instructions"], ans: 1 },
+                { q: "Where is Cache memory located relative to the CPU?", opts: ["On a remote cloud server", "Inside secondary solid state storage", "On or very close to the CPU chip", "Inside the optical drive"], ans: 2 },
+                { q: "Why is Cache memory used?", opts: ["To permanently save files when power is cut", "To store frequently used data/instructions and reduce RAM latency", "To increase physical screen resolution", "To generate random encryption keys"], ans: 1 },
+                { q: "What defines Von Neumann Architecture?", opts: ["Data and instructions are stored in separate memory chips", "Data and instructions share the same primary memory storage", "The CPU operates without registers", "Processing occurs exclusively in ROM"], ans: 1 },
+                { q: "Which register holds the memory address of data about to be read or written?", opts: ["MDR", "PC", "MAR", "ACC"], ans: 2 },
+                { q: "Which register holds the actual data or instruction fetched from memory?", opts: ["MAR", "MDR", "PC", "ALU"], ans: 1 },
+                { q: "What is stored inside the Program Counter (PC)?", opts: ["The memory address of the NEXT instruction to be fetched", "The output of an AND logic operation", "The current clock frequency in GHz", "The total size of physical RAM"], ans: 0 },
+                { q: "What does the Accumulator (ACC) temporarily hold?", opts: ["Unread network data packets", "The intermediate results of ALU calculations", "Deleted browser history", "Device driver configuration settings"], ans: 1 },
+                { q: "How is Clock Speed measured?", opts: ["Megabytes (MB)", "Gigahertz (GHz)", "Bits per second (bps)", "Pixels per inch"], ans: 1 },
+                { q: "What does 1 Hertz (Hz) represent in clock speed?", opts: ["1 byte of memory", "1 processing cycle per second", "1 megabit of data", "1 pixel render"], ans: 1 },
+                { q: "How does having multiple CPU cores improve processing capability?", opts: ["It doubles the speed of light", "It allows independent tasks or parallelized threads to run simultaneously", "It replaces the need for RAM", "It prevents malware infections"], ans: 1 },
+                { q: "What is a limitation of multi-core processors?", opts: ["They cannot process integers", "Software must be specially designed to support parallel processing", "They erase cache memory every 5 seconds", "They only work with optical drives"], ans: 1 },
+                { q: "What is a register?", opts: ["A large magnetic storage disk", "A tiny, lightning-fast internal CPU storage location", "A type of network cable", "An external flash memory drive"], ans: 1 },
+                { q: "Which sequence correctly orders the CPU cycle?", opts: ["Decode -> Fetch -> Execute", "Fetch -> Decode -> Execute", "Execute -> Fetch -> Decode", "Store -> Fetch -> Delete"], ans: 1 }
               ]
             },
             {
@@ -189,10 +200,21 @@
                 { q: "What is the difference between volatile and non-volatile memory?", a: "Volatile memory loses its contents when power is turned off (e.g. RAM); non-volatile memory retains data permanently (e.g. ROM, SSDs)." }
               ],
               quiz: [
-                { q: "What characterises RAM according to the notes?", opts: ["Non-volatile and read-only", "Volatile primary storage holding active programs/files in use", "Secondary storage using magnetic platters", "Immutable boot-up firmware"], ans: 1 },
-                { q: "When is Virtual Memory utilized?", opts: ["When the CPU clock speed drops", "As overflow RAM in secondary storage when physical RAM is full", "To boot up the BIOS", "When calculating sound file sizes"], ans: 1 },
-                { q: "Which secondary storage type uses flash memory chips with no moving parts?", opts: ["Magnetic", "Optical", "Solid State (SSD)", "Tape"], ans: 2 },
-                { q: "According to the notes, what formula calculates sound file size?", opts: ["Width × Height × Colour depth", "Sample rate × Bit depth × Duration (seconds)", "Sample rate × Width × 8", "Duration × Bit rate / 1000"], ans: 1 }
+                { q: "Why is RAM classified as volatile memory?", opts: ["It cannot be rewritten", "Its contents are lost when power is disconnected", "It uses magnetic platters", "It is located outside the motherboard"], ans: 1 },
+                { q: "What is stored in ROM according to the notes?", opts: ["Open browser tabs", "Immutable boot-up code (BIOS/firmware)", "Temporary graphics cache", "User text documents"], ans: 1 },
+                { q: "When is Virtual Memory used?", opts: ["When the CPU clock speed drops", "When physical RAM is fully saturated, using secondary storage as overflow", "Whenever an email is sent", "To clean up hard drive sectors"], ans: 1 },
+                { q: "Why is Virtual Memory slower than physical RAM?", opts: ["Secondary storage read/write speeds are much slower than RAM", "It relies on wireless radio waves", "It can only process 1 bit per minute", "It requires user permission for every byte"], ans: 0 },
+                { q: "Which storage type uses magnetic platters?", opts: ["Solid State Drive (SSD)", "Hard Disk Drive (HDD)", "Optical Blu-ray", "USB Flash Drive"], ans: 1 },
+                { q: "Which storage technology uses lasers to read microscopic pits and lands?", opts: ["Magnetic", "Optical", "Solid State", "Virtual"], ans: 1 },
+                { q: "What makes Solid State Drives (SSDs) durable and fast?", opts: ["They contain high-speed spinning disks", "They use flash memory chips with no moving mechanical parts", "They use liquid cooling", "They are powered by lasers"], ans: 1 },
+                { q: "How many bits make up a single Nibble?", opts: ["2", "4", "8", "16"], ans: 1 },
+                { q: "How many bits are in a Byte?", opts: ["4", "8", "16", "1024"], ans: 1 },
+                { q: "What unit comes immediately after Megabyte (MB) in data capacity scale?", opts: ["Kilobyte (KB)", "Gigabyte (GB)", "Terabyte (TB)", "Petabyte (PB)"], ans: 1 },
+                { q: "How many Bytes are in 1 Kilobyte (KB) in standard metric notation?", opts: ["8", "100", "1,000", "1,000,000"], ans: 2 },
+                { q: "What formula calculates the uncompressed file size of a digital image in bits?", opts: ["Width × Height × Colour depth", "Sample rate × Duration × Bit depth", "Width × Length × Resolution", "Height × Bytes × 8"], ans: 0 },
+                { q: "What formula calculates the file size of a sound recording?", opts: ["Width × Height × Sample rate", "Sample rate × Bit depth × Duration (seconds)", "Bit depth × Volume × Channels", "Sample rate × Resolution"], ans: 1 },
+                { q: "What happens to the contents of ROM when power is turned off?", opts: ["They are deleted completely", "They are retained (non-volatile)", "They are transferred to RAM", "They are backed up online"], ans: 1 },
+                { q: "Why do computers require secondary storage in addition to primary storage?", opts: ["Primary storage is non-volatile", "To provide non-volatile, permanent storage for files and programs", "To speed up the ALU", "Because RAM has infinite capacity"], ans: 1 }
               ]
             },
             {
@@ -206,10 +228,21 @@
                 { q: "What is the key difference between an IP address and a MAC address?", a: "An IP address is logical and changes depending on network location; a MAC address is a permanent physical hardware identifier burned into the NIC." }
               ],
               quiz: [
-                { q: "What is the function of a Router as stated in the notes?", opts: ["Directs frames within a single LAN", "Directs packets between distinct networks", "Connects wireless devices to a wired cable", "Burns MAC addresses onto NICs"], ans: 1 },
-                { q: "In a Star Topology, what is a single point of failure?", opts: ["Any client cable", "The central switch or server", "The wireless access point", "The MAC address"], ans: 1 },
-                { q: "What role does TCP play in the TCP/IP protocol suite?", opts: ["Routes packets across WANs", "Splits data into numbered packets and handles error checking/reassembly", "Encrypts web pages using SSL", "Translates domain names to IP addresses"], ans: 1 },
-                { q: "Which protocol sends email according to the notes?", opts: ["IMAP", "POP3", "SMTP", "FTP"], ans: 2 }
+                { q: "What defines a Local Area Network (LAN)?", opts: ["Covers global continents using satellite links", "Covers a small geographical site under single organisation ownership", "Uses leased public telephone lines exclusively", "Is owned entirely by internet service providers"], ans: 1 },
+                { q: "What is the largest example of a Wide Area Network (WAN)?", opts: ["A school computer lab", "The Internet", "A home Wi-Fi network", "A Bluetooth connection"], ans: 1 },
+                { q: "In a Star Topology, what happens if a single client cable breaks?", opts: ["The entire network fails", "Only that specific client device loses connection", "The central switch crashes", "Traffic switches automatically to Bluetooth"], ans: 1 },
+                { q: "What is a main vulnerability of a Star Topology?", opts: ["Individual cables break easily", "The central switch/server is a single point of failure", "Wireless signals cannot reach it", "It cannot connect to the internet"], ans: 1 },
+                { q: "What is the primary function of a Router?", opts: ["Directs data frames within a local LAN", "Directs data packets between distinct, different networks", "Prints hard copies of web pages", "Encodes digital video files"], ans: 1 },
+                { q: "What is the function of a Network Interface Card (NIC)?", opts: ["Stores BIOS boot instructions", "Provides a physical or wireless connection between a device and a network", "Increases CPU clock speed", "Defragments magnetic drives"], ans: 1 },
+                { q: "What type of address is a MAC address?", opts: ["A logical address assigned dynamically by routers", "A unique physical hardware identifier burned into the NIC", "A web domain name like google.com", "A 32-bit email protocol code"], ans: 1 },
+                { q: "How do IP addresses differ from MAC addresses?", opts: ["IP addresses are permanent hardware IDs", "IP addresses are logical and can change depending on network location", "MAC addresses change every time you reboot", "IP addresses are only used for printers"], ans: 1 },
+                { q: "What role does TCP perform in the TCP/IP suite?", opts: ["Routes packets across external networks", "Splits data into numbered packets and handles error checking/reassembly", "Encrypts web page graphics", "Translates domain names to IP addresses"], ans: 1 },
+                { q: "What role does IP perform in the TCP/IP suite?", opts: ["Formats text documents", "Routes data packets across networks to their destination address", "Manages CPU registers", "Connects Bluetooth devices"], ans: 1 },
+                { q: "Which protocol is used for securely transmitting encrypted web pages?", opts: ["HTTP", "HTTPS", "FTP", "SMTP"], ans: 1 },
+                { q: "What added security does HTTPS use compared to HTTP?", opts: ["MAC filtering", "TLS/SSL encryption", "Defragmentation", "Input sanitation"], ans: 1 },
+                { q: "Which protocol is designed specifically for transferring files across networks?", opts: ["FTP", "SMTP", "IMAP", "POP3"], ans: 0 },
+                { q: "Which email protocol is used to SEND messages to a server?", opts: ["POP3", "IMAP", "SMTP", "HTTP"], ans: 2 },
+                { q: "How does IMAP differ from POP3 for email retrieval?", opts: ["IMAP deletes emails from the server after download", "IMAP keeps emails on the central server so they sync across devices", "IMAP only works without internet", "POP3 encrypts all attachments automatically"], ans: 1 }
               ]
             },
             {
@@ -223,10 +256,21 @@
                 { q: "What is phishing?", a: "A social engineering technique where attackers trick individuals into revealing sensitive data via deceptive emails or websites." }
               ],
               quiz: [
-                { q: "Which type of malware encrypts user files for extortion according to the notes?", opts: ["Spyware", "Trojans", "Ransomware", "Worms"], ans: 2 },
-                { q: "What is defined as Penetration Testing in the notes?", opts: ["Checking passwords with brute-force scripts", "Authorized simulated attacks by ethical hackers to identify vulnerabilities", "Filtering packet headers using firewall rules", "Encrypting plain text into ciphertext"], ans: 1 },
-                { q: "How does the notes define SQL Injection?", opts: ["Sending fake emails to trick users", "Testing every password combination automatically", "Inserting malicious SQL syntax into web input boxes to bypass authentication", "Self-replicating across network cables"], ans: 2 },
-                { q: "What does Encryption transform plain text into?", opts: ["HTML code", "Ciphertext", "SQL syntax", "Binary shift"], ans: 1 }
+                { q: "How is a Virus defined in the security notes?", opts: ["Self-replicating software that spreads without host files", "Malware that attaches to host files and requires user execution to spread", "Software disguised as a legitimate tool", "An authorized security audit test"], ans: 1 },
+                { q: "How does a Worm differ from a Virus?", opts: ["A worm encrypts files for money", "A worm self-replicates across networks without needing a user to run an infected file", "A worm is harmless", "A worm only targets MAC addresses"], ans: 1 },
+                { q: "What is a Trojan?", opts: ["Malware disguised as legitimate software to trick users into installing it", "A hardware firewall tool", "A strong password generator", "A network routing protocol"], ans: 0 },
+                { q: "What is Ransomware designed to do?", opts: ["Monitor keystrokes secretly", "Encrypt user files and demand payment for the decryption key", "Overclock the CPU", "Clean infected hard drives"], ans: 1 },
+                { q: "What is Spyware?", opts: ["Software that secretly records user activity (e.g. keystrokes) and sends it to an attacker", "A network switch configuration", "An open source browser", "A tool for defragmenting disks"], ans: 0 },
+                { q: "What is Social Engineering?", opts: ["Building physical network switches", "Psychological manipulation of people into revealing confidential information", "Writing code in Python", "Configuring firewall ports"], ans: 1 },
+                { q: "What is Phishing?", opts: ["Scanning open network ports", "Using deceptive emails/websites to trick users into giving away sensitive data", "Decrypting ciphertext", "Testing hardware components"], ans: 1 },
+                { q: "How does a Brute-Force attack operate?", opts: ["Injecting SQL code into search bars", "Using automated scripts to test every possible password combination until correct", "Sending physical malware in the post", "Intercepting wireless radio waves"], ans: 1 },
+                { q: "What is SQL Injection?", opts: ["Inserting malicious SQL syntax into web input boxes to manipulate underlying databases", "Sending mass promotional emails", "Shutting down network routers", "Installing unauthorized operating systems"], ans: 0 },
+                { q: "What is Penetration Testing?", opts: ["Hacking personal bank accounts for profit", "Authorized simulated cyberattacks by ethical hackers to find system vulnerabilities", "Testing network cable speed with a meter", "Installing antivirus updates"], ans: 1 },
+                { q: "What does a Firewall inspect to protect a network?", opts: ["CPU register temperatures", "Incoming and outgoing data packet headers against security rules", "User keyboard typing speed", "Monitor refresh rates"], ans: 1 },
+                { q: "How do User Access Levels enhance security?", opts: ["By speeding up internet connections", "By restricting file permissions so users only access data needed for their job role", "By forcing users to buy SSDs", "By disabling network switches"], ans: 1 },
+                { q: "What is Encryption?", opts: ["Deleting old files permanently", "Scrambling plain text into ciphertext using cryptographic keys", "Translating Python into binary", "Compressing images to JPEG format"], ans: 1 },
+                { q: "What is ciphertext?", opts: ["Unencrypted plain text", "Data that has been scrambled by encryption and requires a key to read", "A type of database command", "An open source operating system"], ans: 1 },
+                { q: "Which threat directly targets human trust rather than software flaws?", opts: ["SQL Injection", "Social Engineering (Phishing)", "Brute-force attack", "Defragmentation failure"], ans: 1 }
               ]
             },
             {
@@ -239,9 +283,21 @@
                 { q: "What is the primary role of a device driver?", a: "To act as a translator enabling the operating system to communicate effectively with hardware peripherals." }
               ],
               quiz: [
-                { q: "According to the notes, what is the role of a Device Driver?", opts: ["To schedule CPU multitasking", "To act as a translator between the OS and peripheral hardware", "To defragment magnetic sectors", "To encrypt user files"], ans: 1 },
-                { q: "What does disk defragmentation do?", opts: ["Compresses large files for email transfer", "Reorganizes fragmented magnetic sectors for faster read speeds", "Backs up files to cloud servers", "Translates high-level code"], ans: 1 },
-                { q: "Which of the following is listed as a core OS function in the notes?", opts: ["Input validation", "Defragmentation", "Peripheral device management", "Penetration testing"], ans: 2 }
+                { q: "What is Systems Software?", opts: ["Games and word processors", "Software providing a platform for application execution and hardware management", "Websites hosted in the cloud", "Social media applications"], ans: 1 },
+                { q: "Which of the following is a core function of the Operating System?", opts: ["Designing graphics", "Memory management and CPU multitasking", "Writing pseudocode", "Manufacturing RAM chips"], ans: 1 },
+                { q: "What does GUI stand for in user interfaces?", opts: ["General User Instruction", "Graphical User Interface", "Global Unit Integration", "Gigabyte Universal Interface"], ans: 1 },
+                { q: "How does CLI differ from GUI?", opts: ["CLI uses text commands; GUI uses icons and visual elements", "CLI requires a mouse; GUI uses keyboard only", "CLI is slower than wireless networks", "GUI is only used on web servers"], ans: 0 },
+                { q: "What is Multitasking in an operating system?", opts: ["Running multiple CPUs at the same time", "Sharing CPU time between open applications so they seem to run simultaneously", "Installing two antivirus programs", "Connecting two routers"], ans: 1 },
+                { q: "What is the specific role of a Device Driver?", opts: ["To encrypt database records", "To act as a translator between the OS and peripheral hardware devices", "To defragment SSD drives", "To filter incoming network packets"], ans: 1 },
+                { q: "What happens when a new external hardware device is attached without a driver?", opts: ["The OS cannot communicate with or control the device", "The CPU clock speed increases", "RAM is permanently damaged", "The computer automatically shuts down"], ans: 0 },
+                { q: "What is Utility Software?", opts: ["Primary storage memory", "Maintenance software that helps analyze, configure, optimize, or maintain a computer", "Hardware chips inside the CPU", "Web browser extensions"], ans: 1 },
+                { q: "What does Disk Defragmentation do on a magnetic hard drive?", opts: ["Deletes duplicate text files", "Reorganizes fragmented sectors so related file parts are stored contiguously", "Encrypts the entire hard drive", "Installs firmware updates"], ans: 1 },
+                { q: "Why does defragmentation improve magnetic hard drive read speeds?", opts: ["It speeds up the CPU clock", "The read/write head doesn't have to move back and forth across different tracks", "It adds extra cache memory", "It increases network bandwidth"], ans: 1 },
+                { q: "Why should defragmentation NOT be performed on Solid State Drives (SSDs)?", opts: ["SSDs have no moving parts and defrag causes unnecessary read/write wear on flash cells", "SSDs delete files during defrag", "SSDs do not use bytes", "SSDs only store compressed files"], ans: 0 },
+                { q: "What is the purpose of Backup utility software?", opts: ["To speed up processing cycles", "To make copies of data files so they can be restored if lost or damaged", "To block SQL injection attacks", "To convert binary into hex"], ans: 1 },
+                { q: "What is the purpose of Compression utility software?", opts: ["To scramble text into ciphertext", "To reduce file sizes so they take up less storage space and transfer faster", "To remove viruses from RAM", "To create user accounts"], ans: 1 },
+                { q: "Which utility scans secondary storage for known malicious code signatures?", opts: ["Defragmenter", "Anti-malware scanner", "Device driver", "Formatter"], ans: 1 },
+                { q: "What OS function ensures users must log in with credentials to access their files?", opts: ["Peripheral management", "User security and access control", "Defragmentation", "Multitasking"], ans: 1 }
               ]
             },
             {
@@ -256,11 +312,21 @@
                 { q: "What is the key difference between Open Source and Proprietary software?", a: "Open Source makes the underlying source code freely available to view and edit; Proprietary keeps code secret and protected under license." }
               ],
               quiz: [
-                { q: "According to the notes, which Act requires personal data to be held securely and kept accurate?", opts: ["Computer Misuse Act 1990", "Data Protection Act 2018 (GDPR)", "Copyright Designs and Patents Act 1988", "Freedom of Information Act"], ans: 1 },
-                { q: "What is offence #3 under the Computer Misuse Act 1990 as written in the notes?", opts: ["Unauthorised modification of computer material", "Unauthorised copying of music files", "Failing to recycle e-waste", "Stealing secondary storage drives"], ans: 0 },
-                { q: "What distinguishes Open Source software in the notes?", opts: ["It requires paid annual subscription licenses", "Its source code is kept strictly secret", "Source code is granted freely to inspect and modify", "It cannot run on Linux"], ans: 2 },
-                { q: "What environmental concern regarding e-waste is highlighted in the notes?", opts: ["Excessive plastic recycling", "Toxic heavy metals (lead, mercury) leaking into soil/water", "Radioactive radiation", "Depletion of paper supplies"], ans: 1 },
-                { q: "What social issue is defined as 'The Digital Divide' in the notes?", opts: ["Dividing memory into primary and secondary storage", "Social inequality between those with and without internet access", "Separating networks into LANs and WANs", "Splitting software into open source and proprietary"], ans: 1 }
+                { q: "Which UK law governs how organizations collect and handle personal user data?", opts: ["Computer Misuse Act 1990", "Data Protection Act 2018 (GDPR)", "Copyright Designs and Patents Act 1988", "Health & Safety Act"], ans: 1 },
+                { q: "Under the Data Protection Act 2018, how long should personal data be kept?", opts: ["Forever", "No longer than necessary for its specified purpose", "Exactly 10 years", "Until the CPU is replaced"], ans: 1 },
+                { q: "Which right is granted to individuals under the Data Protection Act 2018?", opts: ["Right to view all company source code", "Right to access and request deletion of their personal data", "Right to free internet access", "Right to bypass firewalls"], ans: 1 },
+                { q: "What is Offence 1 under the Computer Misuse Act 1990?", opts: ["Unauthorised access to computer material (hacking)", "Distributing open source code", "Recycling old monitors", "Sending commercial spam"], ans: 0 },
+                { q: "What is Offence 3 under the Computer Misuse Act 1990?", opts: ["Selling computer hardware", "Unauthorised modification of computer material (e.g. releasing viruses)", "Using proprietary software", "Failing to set a password"], ans: 1 },
+                { q: "Which law protects the intellectual property rights of software developers and artists?", opts: ["Data Protection Act 2018", "Copyright Designs and Patents Act 1988", "Computer Misuse Act 1990", "Freedom of Information Act"], ans: 1 },
+                { q: "What is illegal under the Copyright Designs and Patents Act 1988?", opts: ["Writing comments in source code", "Copying, modifying, or distributing software/media without a valid license", "Encrypting personal files", "Using Open Source Linux"], ans: 1 },
+                { q: "What environmental danger is caused by improper disposal of e-waste?", opts: ["Excessive plastic recycling", "Toxic heavy metals (lead, mercury) leaking into soil and water supplies", "Depletion of WiFi frequencies", "Increased rainfall"], ans: 1 },
+                { q: "What environmental factor associated with cloud data centers contributes to carbon emissions?", opts: ["High electricity consumption for processing and cooling", "Paper consumption", "Use of optical discs", "Using magnetic tapes"], ans: 0 },
+                { q: "What is 'The Digital Divide'?", opts: ["The gap between primary and secondary storage", "The social inequality between those with full access to digital tech and those without", "The division of code into functions", "The split between IPv4 and IPv6"], ans: 1 },
+                { q: "What cultural issue arises from pervasive digital tracking and smart devices?", opts: ["Loss of privacy and concerns over continuous surveillance", "Faster download speeds", "Cheaper hardware costs", "Lack of programming languages"], ans: 0 },
+                { q: "What defines Open Source software?", opts: ["The source code is compiled and kept secret", "The underlying source code is freely available for anyone to inspect, modify, and redistribute", "It is always illegal to use", "It only runs on embedded systems"], ans: 1 },
+                { q: "What defines Proprietary software?", opts: ["Source code is open to the public", "Source code is kept secret and protected under paid user licenses", "It has no copyright holder", "It is free to modify"], ans: 1 },
+                { q: "What is an advantage of Proprietary software compared to Open Source?", opts: ["It is always free", "It usually comes with official customer support, regular updates, and testing", "You can edit the source code freely", "It requires no installation"], ans: 1 },
+                { q: "What is an advantage of Open Source software?", opts: ["Users can modify and customize the code to fit their exact needs for free", "It guarantees 24/7 paid support", "It never contains bugs", "It prevents e-waste"], ans: 0 }
               ]
             }
           ]
@@ -279,9 +345,21 @@
                 { q: "What condition is strictly required for a binary search to work?", a: "The input dataset must already be sorted in order." }
               ],
               quiz: [
-                { q: "How is Abstraction defined in the notes?", opts: ["Breaking a complex problem into smaller sub-problems", "Removing unnecessary detail to focus on essential features", "Producing ordered steps for a computer", "Comparing adjacent pairs of items"], ans: 1 },
-                { q: "Which search algorithm requires a sorted list to function?", opts: ["Linear search", "Binary search", "Bubble search", "Decomposition"], ans: 1 },
-                { q: "What strategy does Merge Sort use according to the notes?", opts: ["Iterating linearly from index 0", "Comparing adjacent pairs continuously", "Divide-and-conquer recursion", "Removing unnecessary details"], ans: 2 }
+                { q: "What is Abstraction in computational thinking?", opts: ["Breaking a problem into sub-problems", "Filtering out unnecessary details to focus on essential features", "Writing Python loops", "Sorting an array"], ans: 1 },
+                { q: "What is Decomposition?", opts: ["Breaking a complex problem down into smaller, manageable sub-problems", "Removing unused variables", "Converting code to machine language", "Merging two arrays"], ans: 0 },
+                { q: "What is Algorithmic Thinking?", opts: ["Testing code for syntax errors", "Developing step-by-step ordered rules to solve a problem", "Buying multi-core CPUs", "Encrypting files"], ans: 1 },
+                { q: "What condition MUST be met before performing a Binary Search?", opts: ["The list must contain only integers", "The list must be sorted in order", "The list size must be under 10 items", "The CPU must be multi-core"], ans: 1 },
+                { q: "How does a Binary Search locate a target item?", opts: ["Checks every item from start to end one by one", "Examines the middle item and discards half the remaining list repeatedly", "Swaps adjacent pairs until sorted", "Randomly picks elements"], ans: 1 },
+                { q: "How does a Linear Search operate?", opts: ["Splits the array in half repeatedly", "Iterates sequentially through a list from start to finish checking each item", "Merges sub-lists recursively", "Calculates hash values"], ans: 1 },
+                { q: "What is an advantage of Linear Search over Binary Search?", opts: ["It is faster on huge sorted lists", "It works on unsorted lists", "It uses O(1) registers", "It requires no memory"], ans: 1 },
+                { q: "How does Bubble Sort work?", opts: ["Splits the list into individual elements first", "Compares adjacent pairs of items and swaps them if out of order", "Finds the middle item and discards half", "Uses binary logic gates"], ans: 1 },
+                { q: "When does Bubble Sort stop running?", opts: ["After 10 passes", "When a complete pass occurs with zero swaps", "When the CPU clock finishes", "When half the list is checked"], ans: 1 },
+                { q: "What strategy does Merge Sort use?", opts: ["Sequential linear scanning", "Divide-and-conquer recursion", "Adjacent pair swapping", "Random selection"], ans: 1 },
+                { q: "What happens in the first phase of a Merge Sort?", opts: ["Adjacent pairs are swapped", "The list is repeatedly split in half down to single individual elements", "The middle item is checked", "Inputs are validated"], ans: 1 },
+                { q: "Why is Merge Sort preferred over Bubble Sort for large datasets?", opts: ["It uses less code", "It is significantly more efficient with faster time performance on large lists", "It doesn't require RAM", "It works without a CPU"], ans: 1 },
+                { q: "What is an algorithm?", opts: ["A physical CPU chip", "A step-by-step set of logical instructions designed to solve a problem", "An encrypted data packet", "A device driver"], ans: 1 },
+                { q: "Which search algorithm has a time efficiency of checking every item in worst case O(n)?", opts: ["Binary search", "Linear search", "Merge sort", "Bubble sort"], ans: 1 },
+                { q: "What is a disadvantage of Bubble Sort?", opts: ["It cannot sort numbers", "It is inefficient and slow for large datasets", "It requires a sorted list to start", "It requires 64-bit operating systems"], ans: 1 }
               ]
             },
             {
@@ -294,9 +372,21 @@
                 { q: "What is the difference between integer and float data types?", a: "Integer represents whole numbers without fractions, whereas float (real) numbers contain fractional decimal components." }
               ],
               quiz: [
-                { q: "Which programming construct is defined as 'conditional branching using IF/ELSE'?", opts: ["Sequence", "Selection", "Iteration", "Array"], ans: 1 },
-                { q: "What data type represents single alphanumeric symbols according to the notes?", opts: ["String", "Integer", "Character", "Real/Float"], ans: 2 },
-                { q: "Which construct represents executing code line by line?", opts: ["Sequence", "Selection", "Iteration", "Recursion"], ans: 0 }
+                { q: "Which data type stores whole numbers without fractional components?", opts: ["Real/Float", "Integer", "String", "Boolean"], ans: 1 },
+                { q: "Which data type stores decimal numbers (e.g. 3.14)?", opts: ["Integer", "Real/Float", "Character", "Boolean"], ans: 1 },
+                { q: "Which data type stores logical values that can only be True or False?", opts: ["String", "Boolean", "Integer", "Character"], ans: 1 },
+                { q: "Which data type stores a single letter, number, or symbol?", opts: ["String", "Character", "Float", "Array"], ans: 1 },
+                { q: "Which data type stores a sequence of text characters inside quotation marks?", opts: ["String", "Integer", "Boolean", "Real"], ans: 0 },
+                { q: "What is Sequence in programming constructs?", opts: ["Conditional branching using IF/ELSE", "Executing code instructions line by line in order", "Looping code block multiple times", "Converting string to integer"], ans: 1 },
+                { q: "What is Selection in programming constructs?", opts: ["Executing code line by line", "Conditional branching where code paths diverge based on a condition (e.g. IF/ELSE)", "Looping a fixed number of times", "Declaring variables"], ans: 1 },
+                { q: "What is Iteration in programming constructs?", opts: ["Executing code line by line once", "Looping or repeating a block of code (e.g. FOR or WHILE loops)", "Creating a 2D array", "Calling a device driver"], ans: 1 },
+                { q: "What type of loop is a FOR loop typically considered?", opts: ["Condition-controlled", "Count-controlled (repeats a set number of times)", "Infinite loop", "Selection loop"], ans: 1 },
+                { q: "What type of loop is a WHILE loop considered?", opts: ["Count-controlled", "Condition-controlled (repeats while a condition remains True)", "Sequence loop", "Casting loop"], ans: 1 },
+                { q: "What operator returns the remainder of an integer division?", opts: ["DIV", "MOD", "AND", "EXP"], ans: 1 },
+                { q: "What operator returns the integer quotient of a division, discarding the remainder?", opts: ["MOD", "DIV", "OR", "NOT"], ans: 1 },
+                { q: "What is Type Casting?", opts: ["Converting a variable value from one data type to another (e.g. string to int)", "Deleting an array element", "Printing text to console", "Creating a WHILE loop"], ans: 0 },
+                { q: "What is an Array?", opts: ["A CPU register", "A data structure storing multiple items of the same data type under one variable name", "A type of network router", "An operating system utility"], ans: 1 },
+                { q: "How are elements indexed in standard 1D arrays?", opts: ["Starting at index 1", "Starting at index 0", "Starting at index 10", "Indexed alphabetically"], ans: 1 }
               ]
             },
             {
@@ -309,9 +399,21 @@
                 { q: "What is boundary test data?", a: "Data pushed right on the very limits of acceptable valid ranges (e.g., testing age 0 or 120)." }
               ],
               quiz: [
-                { q: "How are Syntax Errors defined in the notes?", opts: ["Errors that allow code execution but produce flawed outputs", "Violations of language grammar rules that prevent code compilation", "Data pushed right on valid limits", "Checks ensuring fields are not blank"], ans: 1 },
-                { q: "Which input validation check is listed in the notes?", opts: ["Defragmentation check", "Presence, format, range, and length check", "Syntax error check", "Compiler check"], ans: 1 },
-                { q: "What is Boundary Test Data as defined in the notes?", opts: ["Data of incorrect type that should be rejected", "Data pushed right on the limits of acceptable valid ranges", "Standard everyday inputs", "Unindented code comments"], ans: 1 }
+                { q: "What is the primary goal of Defensive Design?", opts: ["To make programs run on multi-core CPUs", "To anticipate user errors, invalid inputs, and prevent program crashes", "To reduce RAM usage to zero", "To convert Python into HTML"], ans: 1 },
+                { q: "What is Input Validation?", opts: ["Checking that input data meets specific rules before processing it", "Encrypting passwords with SSL", "Writing pseudocode", "Sorting arrays in order"], ans: 0 },
+                { q: "Which validation check ensures a text field has been completed and not left blank?", opts: ["Range check", "Presence check", "Type check", "Format check"], ans: 1 },
+                { q: "Which validation check ensures a numerical input falls between allowed minimum and maximum values?", opts: ["Length check", "Range check", "Presence check", "Format check"], ans: 1 },
+                { q: "Which validation check verifies that an input matches a specific pattern (e.g. postcode structure)?", opts: ["Format check", "Range check", "Presence check", "DIV check"], ans: 0 },
+                { q: "Which validation check verifies the number of characters in a string?", opts: ["Presence check", "Length check", "Range check", "Type check"], ans: 1 },
+                { q: "How does Code Maintainability help developers?", opts: ["It prevents hackers from accessing servers", "Using indentation, comments, and clear variable names makes code easier to read and update", "It speeds up network protocols", "It automatically fixes syntax errors"], ans: 1 },
+                { q: "What defines a Syntax Error?", opts: ["Flawed logic that gives the wrong answer", "A violation of the programming language grammar rules preventing compilation/execution", "A hardware disk failure", "An invalid user input"], ans: 1 },
+                { q: "What defines a Logic Error?", opts: ["Code that fails to compile due to missing brackets", "Code that compiles and runs but produces incorrect results due to a flaw in algorithm logic", "A virus corrupting RAM", "A missing device driver"], ans: 1 },
+                { q: "What is Normal Test Data?", opts: ["Invalid data of wrong data type", "Typical, valid data that should be accepted by the program under normal use", "Data right on the edge of allowed limits", "Data that crashes the compiler"], ans: 1 },
+                { q: "What is Boundary Test Data?", opts: ["Data of incorrect data type", "Valid data positioned right at the extreme allowed limits of acceptable ranges", "Completely random strings", "Missing empty data"], ans: 1 },
+                { q: "What is Erroneous Test Data?", opts: ["Data of valid type and within normal range", "Invalid data of incorrect type or outside allowed limits that should be rejected", "Data tested on boundary edges", "Code comments"], ans: 1 },
+                { q: "If an age input accepts 18 to 65, what are the Boundary test values?", opts: ["25 and 40", "18 and 65", "17 and 66", "'Eighteen' and 'Sixty'"], ans: 1 },
+                { q: "If an age input accepts 18 to 65, what is an Erroneous test value?", opts: ["25", "18", "12 (or 'hello')", "65"], ans: 2 },
+                { q: "Why are Authentication Checks implemented in software?", opts: ["To format strings", "To confirm the identity of a user before granting access to features or data", "To sort arrays faster", "To calculate MOD values"], ans: 1 }
               ]
             },
             {
@@ -324,8 +426,21 @@
                 { q: "When does an AND gate output a True (1) signal?", a: "Only when both input A and input B are simultaneously True (1)." }
               ],
               quiz: [
-                { q: "When does an AND Gate output True according to the notes?", opts: ["When at least one input is True", "Only if BOTH inputs are True", "When the input is 0", "When inputs are different"], ans: 1 },
-                { q: "When does an OR Gate output True according to the notes?", opts: ["Only if both inputs are True", "If AT LEAST ONE input is True", "When the input is inverted", "Never"], ans: 1 }
+                { q: "What values does Boolean algebra evaluate?", opts: ["Any integer from 0 to 255", "True (1) or False (0)", "Fractional floating decimals", "Text strings"], ans: 1 },
+                { q: "What is the output of a NOT gate if the input A is 0?", opts: ["0", "1", "Null", "-1"], ans: 1 },
+                { q: "What is the output of a NOT gate if the input A is 1?", opts: ["0", "1", "2", "True"], ans: 0 },
+                { q: "When does an AND gate output True (1)?", opts: ["When at least one input is True", "Only when BOTH inputs are True (1)", "When both inputs are False (0)", "When inputs are inverted"], ans: 1 },
+                { q: "What is the output of an AND gate if Input A = 1 and Input B = 0?", opts: ["1", "0", "True", "2"], ans: 1 },
+                { q: "What is the output of an AND gate if Input A = 1 and Input B = 1?", opts: ["0", "1", "11", "False"], ans: 1 },
+                { q: "When does an OR gate output True (1)?", opts: ["Only when both inputs are False", "When AT LEAST ONE input is True (1)", "Only when both inputs are True", "When input A is 0"], ans: 1 },
+                { q: "What is the output of an OR gate if Input A = 1 and Input B = 0?", opts: ["0", "1", "False", "Null"], ans: 1 },
+                { q: "What is the output of an OR gate if Input A = 0 and Input B = 0?", opts: ["0", "1", "True", "Undefined"], ans: 0 },
+                { q: "How many inputs does a standard NOT gate have?", opts: ["1", "2", "3", "4"], ans: 0 },
+                { q: "How many inputs does a standard AND or OR gate typically have in basic logic circuits?", opts: ["1", "At least 2", "Exactly 8", "16"], ans: 1 },
+                { q: "What table is used to show all possible input combinations and their resulting outputs for a logic circuit?", opts: ["Frequency table", "Truth table", "Array table", "Defrag table"], ans: 1 },
+                { q: "How many rows (excluding headers) are in a truth table for a 2-input logic gate?", opts: ["2", "4 (representing 00, 01, 10, 11)", "8", "16"], ans: 1 },
+                { q: "What Boolean output results from: NOT(1 AND 1)?", opts: ["1", "0", "True", "Undefined"], ans: 1 },
+                { q: "What Boolean output results from: (0 OR 1) AND 1?", opts: ["0", "1", "False", "2"], ans: 1 }
               ]
             },
             {
@@ -338,8 +453,21 @@
                 { q: "What is the main difference between a compiler and an interpreter?", a: "A compiler translates the whole program at once before execution; an interpreter translates and executes code line by line." }
               ],
               quiz: [
-                { q: "According to the notes, how does an Interpreter operate?", opts: ["Translates entire source code all at once generating an executable file", "Translates and executes source code line by line during runtime", "Defragments secondary storage drives", "Protects personal data under GDPR"], ans: 1 },
-                { q: "Which IDE facility is explicitly listed in the notes?", opts: ["Input validation", "Syntax highlighting and error diagnostics", "Packet filtering", "Defragmentation"], ans: 1 }
+                { q: "Why must high-level source code be translated before execution?", opts: ["CPUs can only directly execute binary machine code (1s and 0s)", "High-level code uses too much paper", "To encrypt user files under GDPR", "To compress image resolution"], ans: 0 },
+                { q: "What characterises High-Level programming languages?", opts: ["Written entirely in 1s and 0s", "Uses English-like keywords and structure making it easier for humans to read and write", "Directly controls CPU registers without translation", "Only runs on embedded devices"], ans: 1 },
+                { q: "What characterises Low-Level assembly language?", opts: ["Uses mnemonic instructions (e.g. LDA, STA) closely tied to specific CPU architecture", "Uses Python syntax", "Does not require an assembler", "Is designed for web design"], ans: 0 },
+                { q: "How does a Compiler translate code?", opts: ["Translates and executes line by line at runtime", "Translates the entire high-level source code into machine code all at once, producing an executable file", "Translates pseudo-code into HTML", "Translates hex to denary"], ans: 1 },
+                { q: "How does an Interpreter translate code?", opts: ["Translates the whole file all at once before running", "Translates and executes source code line by line during runtime", "Produces a standalone .exe file", "Defragments secondary drives"], ans: 1 },
+                { q: "What is an advantage of compiled programs over interpreted ones?", opts: ["Compiled executable files run faster and do not require the original source code or compiler to run", "Compiled code is easier for beginners to edit line by line", "Compilers never report syntax errors", "Interpreters produce larger executable files"], ans: 0 },
+                { q: "What is an advantage of an Interpreter during software development?", opts: ["It produces a standalone executable file", "It pinpoints errors line by line immediately when encountered, making debugging easier", "It runs faster than machine code", "It requires no CPU RAM"], ans: 1 },
+                { q: "What does IDE stand for?", opts: ["Internal Data Encryption", "Integrated Development Environment", "Integrated Device Engine", "Instruction Decode Execute"], ans: 1 },
+                { q: "Which IDE feature color-codes keywords, strings, and variables to improve readability?", opts: ["Debugger", "Syntax highlighting", "Compiler", "Auto-backup"], ans: 1 },
+                { q: "Which IDE feature allows developers to pause execution and inspect variable values to locate bugs?", opts: ["Syntax highlighting", "Debugging tools (breakpoints / step-through)", "Auto-indentation", "Text editor"], ans: 1 },
+                { q: "Which IDE feature automatically formats block structures like loops and IF statements?", opts: ["Auto-indentation", "Compiler", "Interpreter", "Defragmenter"], ans: 0 },
+                { q: "Which IDE feature alerts the programmer to syntax mistakes as they type?", opts: ["Error diagnostics", "Solid state drive", "Network interface card", "Binary shift"], ans: 0 },
+                { q: "What is a Run-Time Environment in an IDE?", opts: ["A physical cooling fan", "A facility allowing the programmer to execute and test their code directly within the IDE", "A wireless access point", "An operating system driver"], ans: 1 },
+                { q: "What translator is used specifically to convert Low-Level Assembly language into machine code?", opts: ["Compiler", "Interpreter", "Assembler", "Defragmenter"], ans: 2 },
+                { q: "Why is machine code hard for humans to write directly?", opts: ["It consists solely of binary numbers (0s and 1s) representing raw machine instructions", "It uses too many English words", "It requires an IDE to open", "It only runs on optical discs"], ans: 0 }
               ]
             }
           ]
